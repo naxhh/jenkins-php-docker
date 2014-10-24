@@ -1,0 +1,1 @@
+PATH=$PATH:/home/jenkins/vendor/bin
