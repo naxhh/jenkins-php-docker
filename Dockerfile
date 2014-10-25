@@ -42,7 +42,7 @@ RUN cd /tmp; \
 
 # Install php packages.
 RUN apt-get update
-RUN apt-get -y -f install php5-cli php5-dev php5-curl curl php-pear
+RUN apt-get -y -f install php5-cli php5-dev php5-curl curl php-pear ant
 
 # Create a jenkins "HOME" for composer files.
 RUN mkdir /home/jenkins
