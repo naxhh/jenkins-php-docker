@@ -2,7 +2,7 @@ Jenkins-PHP Docker
 =========
 
 Here is another Jenkins-php template docker.
-With the difference that this one works. Or at least has all the files you will need :)
+With the difference that **this one works**.
 
 Is based on the Jenkins official docker image.
 
@@ -13,7 +13,7 @@ Installing
 Saddly you just can't run the docker image and start working. You need to clone this repo. This is because the Jenkins image sets a volume for the jenkins home folder. And you will need to add the php template to that folder.
 
 - Clone this repo. Like: /var/docker/jenkins-php-docker
-- - Give `rwx`rights for the `jenkins` user in that folder
+- - Give `rwx` rights for the `jenkins` user in that folder
 - Build the docker image `docker build -t jenkins-php .`
 - Run the image `docker run -d -P -v /var/docker/jenkins-php-docker:/var/jenkins_home:rw jenkins-php`
 
