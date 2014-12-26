@@ -24,6 +24,9 @@ RUN curl -L https://updates.jenkins-ci.org/latest/pmd.hpi -o /tmp/WEB-INF/plugin
 RUN curl -L https://updates.jenkins-ci.org/latest/violations.hpi -o /tmp/WEB-INF/plugins/violations.hpi
 RUN curl -L https://updates.jenkins-ci.org/latest/xunit.hpi -o /tmp/WEB-INF/plugins/xunit.hpi
 
+# Install Docker plugin for docker deploy.
+RUN curl -L https://updates.jenkins-ci.org/latest/docker-build-publish.hpi -o /tmp/WEB-INF/plugins/docker-build-publish.hpi
+
 # Add all to the war file.
 RUN cd /tmp; \
   zip --grow /usr/share/jenkins/jenkins.war WEB-INF/plugins/scm-api.hpi && \
@@ -39,10 +42,14 @@ RUN cd /tmp; \
   zip --grow /usr/share/jenkins/jenkins.war WEB-INF/plugins/pmd.hpi && \
   zip --grow /usr/share/jenkins/jenkins.war WEB-INF/plugins/violations.hpi && \
   zip --grow /usr/share/jenkins/jenkins.war WEB-INF/plugins/xunit.hpi
+  zip --grow /usr/share/jenkins/jenkins.war WEB-INF/plugins/docker-build-publish.hpi
 
 # Install php packages.
 RUN apt-get update
 RUN apt-get -y -f install php5-cli php5-dev php5-curl curl php-pear ant
+
+# Install docker
+RUN apt-get -y -f install docker.io
 
 # Create a jenkins "HOME" for composer files.
 RUN mkdir /home/jenkins
