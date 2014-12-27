@@ -7,11 +7,6 @@ USER root
 
 RUN mkdir -p /tmp/WEB-INF/plugins
 
-# Install git plugin for building support.
-#RUN curl -L https://updates.jenkins-ci.org/latest/scm-api.hpi -o /tmp/WEB-INF/plugins/scm-api.hpi
-#RUN curl -L https://updates.jenkins-ci.org/latest/git.hpi -o /tmp/WEB-INF/plugins/git.hpi
-#RUN curl -L https://updates.jenkins-ci.org/latest/git-client.hpi -o /tmp/WEB-INF/plugins/git-client.hpi
-
 # Install required jenkins plugins.
 RUN curl -L https://updates.jenkins-ci.org/latest/checkstyle.hpi -o /tmp/WEB-INF/plugins/checkstyle.hpi
 RUN curl -L https://updates.jenkins-ci.org/latest/cloverphp.hpi -o /tmp/WEB-INF/plugins/cloverphp.hpi
@@ -29,9 +24,6 @@ RUN curl -L https://updates.jenkins-ci.org/latest/docker-build-publish.hpi -o /t
 
 # Add all to the war file.
 RUN cd /tmp; \
-  zip --grow /usr/share/jenkins/jenkins.war WEB-INF/plugins/scm-api.hpi && \
-  zip --grow /usr/share/jenkins/jenkins.war WEB-INF/plugins/git.hpi && \
-  zip --grow /usr/share/jenkins/jenkins.war WEB-INF/plugins/git-client.hpi && \
   zip --grow /usr/share/jenkins/jenkins.war WEB-INF/plugins/checkstyle.hpi && \
   zip --grow /usr/share/jenkins/jenkins.war WEB-INF/plugins/cloverphp.hpi && \
   zip --grow /usr/share/jenkins/jenkins.war WEB-INF/plugins/crap4j.hpi && \
